@@ -1,20 +1,20 @@
 import React from 'react';
+import EmployeeList from './EmployeeList';
 
-const Navbar = () => {
-  return (
-    <nav className="navbar navbar-dark bg-dark">
-        <div className="container-flex">
-            <a className="navbar-brand" href="#">
-                <img src={logo} alt="logo" width="30" height="30" className="d-inline-block align-text-top me-2 ms-2" />
-                Inicio
-            </a>
-            <a className= "navbar-brand text-white-50">Acerca de</a>
-            <a className= "navbar-brand text-white-50">Contacto</a>
-        </div>
-        
-        {data.user && data.password === password ? <Logout onSubmit={onSubmit} data = {data} /> : <Login onSubmit={onSubmit} />}
-      
-    </nav>
+const Navbar = ({setLogin, data}) => {
+  return( 
+    <>
+      <nav className="navbar navbar-dark bg-dark">
+          <div className="d-flex">
+              <a className= "navbar-brand text-white-50 ms-2">Usuario : </a>
+              <a className= "navbar-brand">{data.user}</a>
+          </div>
+          <div className="d-flex">
+            <button type="button" onClick={() => setLogin(true)} className="btn btn-warning me-4">Logout</button>
+          </div>
+      </nav>
+      <EmployeeList />
+    </>
   )
 };
 

@@ -1,19 +1,22 @@
 import React, {useState, useEffect} from 'react';
+import EmmployeeUser from './components/EmmployeeUser';
 import Login from './components/Login';
+import Navbar from './components/Navbar';
 
 const initialUser =  {
   user: '',
   password: ''
 }
 
+
 function App() {
   const [user, setUser] = useState({initialUser});
   const handleSubmitUser = (data) => {
     setUser(data);
-    console.log(data);
   };
+  console.log(user);
   return (
-    <Login />
+    <Login data = {user} onSubmitValues={handleSubmitUser} />
   );
 }
 
