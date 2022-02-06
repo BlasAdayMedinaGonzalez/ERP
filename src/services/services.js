@@ -2,8 +2,8 @@ import axios from 'axios';
 const APIURL = 'http://localhost:8000/api/v1'
 
 
-const fgetAllemployees = () => {
-    return fetch(`${APIURL}/employees`).then((res) => res.json());
+const fgetAllemployees = async () => {
+    return await axios.get(`${APIURL}/employees`);
 }
 
 const agregaremployee = (employee) => {

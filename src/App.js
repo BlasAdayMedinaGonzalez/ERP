@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import EmmployeeUser from './components/EmmployeeUser';
+import {fgetAllemployees} from "./services/services"
 import Login from './components/Login';
-import Navbar from './components/Navbar';
 
 const initialUser =  {
   user: '',
@@ -11,12 +10,23 @@ const initialUser =  {
 
 function App() {
   const [user, setUser] = useState({initialUser});
+  const [employees, setEmployees] = useState([]);
+  const [recargar, setRecargar] = useState(true);
+
+  useEffect(() =>{
+    fgetAllemployees().then((res) => {
+      console.log(res.data);
+      setEmployees(res.data)
+      setRecargar(false)
+    })
+  },[recargar]);
+  
   const handleSubmitUser = (data) => {
     setUser(data);
   };
-  console.log(user);
+
   return (
-    <Login data = {user} onSubmitValues={handleSubmitUser} />
+    <Login data = {user} employees={employees} onSubmitValues={handleSubmitUser} setRecargar={setRecargar} />
   );
 }
 

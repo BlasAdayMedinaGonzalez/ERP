@@ -13,7 +13,7 @@ const admin = {
   password: "admin"
 };
 
-const Login = ({data, onSubmitValues}) => {
+const Login = ({data, onSubmitValues, employees, setRecargar}) => {
 
   const [form, setFormState] = useState(initUser);
   const [adminVerification, setuserVerification] = useState(true);
@@ -28,7 +28,6 @@ const Login = ({data, onSubmitValues}) => {
 
   const handleSubmit = (e) => {
     if (JSON.stringify(form) !== JSON.stringify(admin)) {
-      console.log("No son iguales");
       setuserVerification(false);
     } else {
       setuserVerification(true);
@@ -76,10 +75,8 @@ const Login = ({data, onSubmitValues}) => {
         </div>
     )
   } else {
-    console.log(adminVerification);
     if (adminVerification) {
-      console.log("Debería pasar por aquí" + adminVerification);
-      return <Navbar data={data} setLogin={setLogin} />
+      return <Navbar data={data} employees={employees} setLogin={setLogin} setRecargar={setRecargar} />
     } else  {
       return <EmmployeeUser data={data} setLogin={setLogin} />
     }
