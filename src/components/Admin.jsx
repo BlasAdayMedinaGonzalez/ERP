@@ -1,6 +1,16 @@
 import React, {useState} from 'react';
 import {editaremployee, agregaremployee} from '../services/services'
 
+const employeeNewEmployee = {
+  first_name: '',
+  last_name:'',
+  hora_entrada:'',
+  hora_salida:'',
+  departamento:'',
+  formacion:'',
+  contacto:'',
+  salario:''
+}
 const employeeEdit = {
   first_name: '',
   last_name:'',
@@ -13,77 +23,82 @@ const employeeEdit = {
 }
 
 const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo, employeeAddboolean, setemployeeAddboolean}) => {
-  const [employeeInputForm, setemployeeInputForm] = useState(employeeEdit);
+  const [employeeInputForm, setemployeeInputForm] = useState(employeeNewEmployee);
 
-  // const[escribirNombre, setEscribirNombre] = useState();
-  // const[escribirApellidos, setEscribirApellidos] = useState();
-  // const[escribirHoraEntrada, setEscribirHoraEntrada] = useState();
-  // const[escribirSalida, setescribirSalida] = useState();
-  // const[escribirDepartamento, setEscribirDepartamento] = useState();
-  // const[escribirFormacion, setEscribirFormacion] = useState();
-  // const[escribirContacto, setEscribirContacto] = useState();
-  // const[escribirSalario, setEscribirSalario] = useState();
+  const [employeeInputFormEdit, setemployeeInputFormEdit] = useState(employeeEdit);
+
+  const[escribirNombre, setEscribirNombre] = useState(employeeData.first_name);
+  const[escribirApellidos, setEscribirApellidos] = useState(employeeData.last_name);
+  const[escribirHoraEntrada, setEscribirHoraEntrada] = useState(employeeData.hora_entrada);
+  const[escribirSalida, setescribirSalida] = useState(employeeData.hora_salida);
+  const[escribirDepartamento, setEscribirDepartamento] = useState(employeeData.departamento);
+  const[escribirFormacion, setEscribirFormacion] = useState(employeeData.formacion);
+  const[escribirContacto, setEscribirContacto] = useState(employeeData.contacto);
+  const[escribirSalario, setEscribirSalario] = useState(employeeData.salario);
 
   const handleChange = (e) => {
-    setemployeeInputForm({
-      ...employeeInputForm,
-      [e.target.name] : e.target.value
-    });
-
+    if (employeeAddboolean) {
+      setemployeeInputForm({
+        ...employeeInputForm,
+        [e.target.name] : e.target.value
+      });
+    } else {
+      if (e.target.name === "first_name") {
+        setEscribirNombre(e.target.value);
+      } else  if (e.target.name === "last_name") {
+        setEscribirApellidos(e.target.value);
+      } else if (e.target.name === "hora_entrada") {
+        setEscribirHoraEntrada(e.target.value);
+      } else if (e.target.name === "hora_salida") {
+        setescribirSalida(e.target.value);
+      } else if (e.target.name === "departamento") {
+        setEscribirDepartamento(e.target.value);
+      } else if (e.target.name === "formacion") {
+        setEscribirFormacion(e.target.value);
+      } else if (e.target.name === "contacto") {
+        setEscribirContacto(e.target.value);
+      } else if (e.target.name === "salario") {
+        setEscribirSalario(e.target.value);
+      }
+      
+    }
+    
+    console.log(e.target.value);
   }
+  
 
   const handleSubmitAdd = (e) => {
-    
     if (employeeAddboolean) {
       e.preventDefault();
       agregaremployee(employeeInputForm)
       alert("Se ha agregado los datos correctamente")
     } else {
       e.preventDefault();
-      if (employeeInputForm.first_name === "") {
-        setemployeeInputForm({ 
-         
-          first_name: employeeData.first_name});
-      }
-      if (employeeInputForm.last_name === "") {
-        setemployeeInputForm({ 
-         
-          last_name: employeeData.last_name});
-      }
-      if (employeeInputForm.hora_entrada === "") {
-        setemployeeInputForm({ 
-          
-          hora_entrada: employeeData.hora_entrada});
-      }
-      if (employeeInputForm.hora_salida === "") {
-        setemployeeInputForm({ 
-         
-          hora_salida: employeeData.hora_salida});
-      }
-      if (employeeInputForm.departamento === "") {
-        setemployeeInputForm({ 
-         
-          departamento: employeeData.departamento});
-      }
-      if (employeeInputForm.formacion === "") {
-        setemployeeInputForm({ 
-          
-          formacion: employeeData.formacion});
-      }
-      if (employeeInputForm.contacto === "") {
-        setemployeeInputForm({ 
-        
-          contacto: employeeData.contacto});
-      }
-      if (employeeInputForm.salario === "") {
-        setemployeeInputForm({ 
-          ...employeeInputForm,
-          salario: employeeData.salario});
-      }
-      
-      editaremployee(employeeInputForm, employeeData.employee_id);
+      // setemployeeInputFormEdit({
+      //   ...employeeInputFormEdit,
+      //   first_name: escribirNombre,
+      //   last_name: escribirApellidos,
+      //   hora_entrada: escribirHoraEntrada,
+      //   hora_salida: escribirSalida,
+      //   departamento: escribirDepartamento,
+      //   formacion: escribirFormacion,
+      //   contacto: escribirContacto,
+      //   salario: escribirSalario
+      // });
+      const employeeEdit = {
+        first_name: escribirNombre,
+        last_name: escribirApellidos,
+        hora_entrada: escribirHoraEntrada,
+        hora_salida: escribirSalida,
+        departamento: escribirDepartamento,
+        formacion: escribirFormacion,
+        contacto: escribirContacto,
+        salario: escribirSalario
+      };
+      editaremployee(employeeEdit, employeeData.employee_id);
       alert("Se ha actualizado los datos correctamente")
     }
+    
     setRecargar(true);
   };
   if (!employeeAddboolean) {
@@ -100,7 +115,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 type="text"
                 className="form-control"
                 id="first_name"
-                value= {employeeInputForm.first_name}
+                value= {escribirNombre}
                 placeholder={employeeData.first_name}
                 onChange={handleChange}
               />
@@ -114,7 +129,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 type="text"
                 className="form-control"
                 id="last_name"
-                value={employeeInputForm.last_name}
+                value={escribirApellidos}
                 placeholder={employeeData.last_name}
                 onChange={handleChange}
               />
@@ -128,7 +143,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 type="text"
                 className="form-control"
                 id="last_name"
-                value={employeeInputForm.hora_entrada}
+                value={escribirHoraEntrada}
                 placeholder={employeeData.hora_entrada}
                 onChange={handleChange}
               />
@@ -142,7 +157,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 type="text"
                 className="form-control"
                 id="last_name"
-                value={employeeInputForm.hora_salida}
+                value={escribirSalida}
                 placeholder={employeeData.hora_salida}
                 onChange={handleChange}
               />
@@ -156,7 +171,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 type="text"
                 className="form-control"
                 id="last_name"
-                value={employeeInputForm.departamento}
+                value={escribirDepartamento}
                 placeholder={employeeData.departamento}
                 onChange={handleChange}
               />
@@ -170,7 +185,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 type="text"
                 className="form-control"
                 id="last_name"
-                value={employeeInputForm.formacion}
+                value={escribirFormacion}
                 placeholder={employeeData.formacion}
                 onChange={handleChange}
               />
@@ -184,7 +199,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 type="text"
                 className="form-control"
                 id="last_name"
-                value={employeeInputForm.contacto}
+                value={escribirContacto}
                 placeholder={employeeData.contacto}
                 onChange={handleChange}
               />
@@ -198,7 +213,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 type="text"
                 className="form-control"
                 id="last_name"
-                value={employeeInputForm.salario}
+                value={escribirSalario}
                 placeholder={employeeData.salario}
                 onChange={handleChange}
               />
