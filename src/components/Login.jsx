@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import logo from '../assets/user.jpg';
-import EmmployeeUser from './EmmployeeUser';
+import EmployeeUser from './Admin';
 import Navbar from './Navbar';
 
 const initUser = {
@@ -13,7 +13,7 @@ const admin = {
   password: "admin"
 };
 
-const Login = ({data, onSubmitValues, employees, setRecargar}) => {
+const Login = ({data, onSubmitValues, employees, setEmployeeData, employeeData, setRecargar,setEmployeeInfo,employeeInfo,employeeAddboolean,setemployeeAddboolean}) => {
 
   const [form, setFormState] = useState(initUser);
   const [adminVerification, setuserVerification] = useState(true);
@@ -76,9 +76,10 @@ const Login = ({data, onSubmitValues, employees, setRecargar}) => {
     )
   } else {
     if (adminVerification) {
-      return <Navbar data={data} employees={employees} setLogin={setLogin} setRecargar={setRecargar} />
+      return <Navbar employeeAddboolean={employeeAddboolean} setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} setEmployeeInfo= {setEmployeeInfo} data={data} employeeData={employeeData} setEmployeeData={setEmployeeData} employees={employees} setLogin={setLogin} setRecargar={setRecargar} />
     } else  {
-      return <EmmployeeUser data={data} setLogin={setLogin} />
+      return <div>En mantenimiento</div>
+      // return <EmployeeUser employeeData={employeeData} data={data} setLogin={setLogin} />
     }
     
   }

@@ -1,7 +1,7 @@
 import React from 'react';
 import EmployeeList from './EmployeeList';
 
-const Navbar = ({setLogin, data, employees, setRecargar}) => {
+const Navbar = ({setLogin, data, employees, setEmployeeData, employeeData, setRecargar, employeeInfo, setEmployeeInfo, employeeAddboolean, setemployeeAddboolean}) => {
   return( 
     <>
       <nav className="navbar navbar-dark bg-dark">
@@ -13,7 +13,7 @@ const Navbar = ({setLogin, data, employees, setRecargar}) => {
             <button type="button" onClick={() => setLogin(true)} className="btn btn-warning me-4">Logout</button>
           </div>
       </nav>
-      <EmployeeList employees={employees} setRecargar={setRecargar} />
+      <EmployeeList employeeAddboolean={employeeAddboolean} setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} setEmployeeInfo={setEmployeeInfo}  employees={employees} employeeData={employeeData} setEmployeeData={setEmployeeData} setRecargar={setRecargar} />
     </>
   )
 };

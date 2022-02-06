@@ -9,9 +9,12 @@ const initialUser =  {
 
 
 function App() {
+  const [employeeData, setEmployeeData] = useState([]);
   const [user, setUser] = useState({initialUser});
   const [employees, setEmployees] = useState([]);
   const [recargar, setRecargar] = useState(true);
+  const [employeeInfo, setEmployeeInfo] = useState(true);
+  const [employeeAddboolean, setemployeeAddboolean] = useState(false);
 
   useEffect(() =>{
     fgetAllemployees().then((res) => {
@@ -26,7 +29,7 @@ function App() {
   };
 
   return (
-    <Login data = {user} employees={employees} onSubmitValues={handleSubmitUser} setRecargar={setRecargar} />
+    <Login employeeAddboolean={employeeAddboolean} setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} setEmployeeInfo= {setEmployeeInfo} employeeData={employeeData} setEmployeeData={setEmployeeData} data = {user} employees={employees} onSubmitValues={handleSubmitUser} setRecargar={setRecargar} />
   );
 }
 
