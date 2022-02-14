@@ -29,7 +29,12 @@ function App() {
   };
 
   return (
-    <Login employeeAddboolean={employeeAddboolean} setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} setEmployeeInfo= {setEmployeeInfo} employeeData={employeeData} setEmployeeData={setEmployeeData} data = {user} employees={employees} onSubmitValues={handleSubmitUser} setRecargar={setRecargar} />
+    <Login employeeAddboolean={employeeAddboolean} 
+    setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} 
+    setEmployeeInfo= {setEmployeeInfo} employeeData={employeeData} 
+    setEmployeeData={setEmployeeData} data = {user} 
+    employees={employees} onSubmitValues={handleSubmitUser} 
+    setRecargar={setRecargar} />
   );
 }
 

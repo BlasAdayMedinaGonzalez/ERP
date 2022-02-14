@@ -13,7 +13,8 @@ const admin = {
   password: "admin"
 };
 
-const Login = ({data, onSubmitValues, employees, setEmployeeData, employeeData, setRecargar,setEmployeeInfo,employeeInfo,employeeAddboolean,setemployeeAddboolean}) => {
+const Login = ({data, onSubmitValues, employees, setEmployeeData, 
+  employeeData, setRecargar,setEmployeeInfo,employeeInfo,employeeAddboolean,setemployeeAddboolean}) => {
 
   const [form, setFormState] = useState(initUser);
   const [adminVerification, setuserVerification] = useState(true);
@@ -41,7 +42,7 @@ const Login = ({data, onSubmitValues, employees, setEmployeeData, employeeData, 
       <div className="container h-100">
         <div className="row align-items-center h-75 ">
             <div className="col-6 mx-auto">
-            <div className="card align-items-center border-0 bg-info" >
+            <div className="card align-items-center border-0" >
               <img className= "mt-2 mb-2" src={logo} alt="logo" width="100" height="100" />
                 <form onSubmit={handleSubmit}>
                     <div className="d-flex mb-3">
@@ -78,8 +79,14 @@ const Login = ({data, onSubmitValues, employees, setEmployeeData, employeeData, 
     if (adminVerification) {
       return <Navbar employeeAddboolean={employeeAddboolean} setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} setEmployeeInfo= {setEmployeeInfo} data={data} employeeData={employeeData} setEmployeeData={setEmployeeData} employees={employees} setLogin={setLogin} setRecargar={setRecargar} />
     } else  {
-      return <div>En mantenimiento</div>
-      // return <EmployeeUser employeeData={employeeData} data={data} setLogin={setLogin} />
+      console.log(data.user);
+      console.log(employees.data.filter(value => value.first_name === "Aday"));
+      return( 
+      <div>En mantenimiento</div>
+      
+      )
+      
+      
     }
     
   }

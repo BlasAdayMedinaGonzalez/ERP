@@ -101,6 +101,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
     
     setRecargar(true);
   };
+  
   if (!employeeAddboolean) {
     return (
       <div>
@@ -347,7 +348,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <button type="submit" className="btn btn-primary mt-2">
-              Actualizar
+              Añadir
             </button>
           </form>
           <div className="d-grid col-6 mx-auto">
