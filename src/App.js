@@ -15,6 +15,7 @@ function App() {
   const [recargar, setRecargar] = useState(true);
   const [employeeInfo, setEmployeeInfo] = useState(true);
   const [employeeAddboolean, setemployeeAddboolean] = useState(false);
+  const [employee, setEmployee] = useState([]);
 
   useEffect(() =>{
     fgetAllemployees().then((res) => {
@@ -34,7 +35,7 @@ function App() {
     setEmployeeInfo= {setEmployeeInfo} employeeData={employeeData} 
     setEmployeeData={setEmployeeData} data = {user} 
     employees={employees} onSubmitValues={handleSubmitUser} 
-    setRecargar={setRecargar} />
+    setRecargar={setRecargar} employee={employee} setEmployee={setEmployee} />
   );
 }
 

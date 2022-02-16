@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import logo from '../assets/user.jpg';
-import EmployeeUser from './Admin';
+import EmployeePage from './EmployeePage';
 import Navbar from './Navbar';
 
 const initUser = {
@@ -14,11 +14,18 @@ const admin = {
 };
 
 const Login = ({data, onSubmitValues, employees, setEmployeeData, 
-  employeeData, setRecargar,setEmployeeInfo,employeeInfo,employeeAddboolean,setemployeeAddboolean}) => {
+  employeeData, setRecargar,setEmployeeInfo,employeeInfo,employeeAddboolean,setemployeeAddboolean,
+  employee, setEmployee}) => {
 
   const [form, setFormState] = useState(initUser);
   const [adminVerification, setuserVerification] = useState(true);
   const [login, setLogin] = useState(true);
+  
+
+  const setemployeeInfo = () => {
+    const userInfo = employees.data.find(value => value.first_name === data.user)
+    setEmployee(userInfo);
+  }
 
   const handleChange = (e) => {
     setFormState({
@@ -79,10 +86,9 @@ const Login = ({data, onSubmitValues, employees, setEmployeeData,
     if (adminVerification) {
       return <Navbar employeeAddboolean={employeeAddboolean} setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} setEmployeeInfo= {setEmployeeInfo} data={data} employeeData={employeeData} setEmployeeData={setEmployeeData} employees={employees} setLogin={setLogin} setRecargar={setRecargar} />
     } else  {
-      console.log(data.user);
-      console.log(employees.data.filter(value => value.first_name === "Aday"));
-      return( 
-      <div>En mantenimiento</div>
+      // setemployeeInfo();
+      return ( 
+      <EmployeePage data={data} employees={employees} employee={employee} setEmployee={setEmployee} setRecargar={setRecargar} setLogin={setLogin} />
       
       )
       

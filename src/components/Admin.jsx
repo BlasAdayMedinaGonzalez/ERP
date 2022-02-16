@@ -74,17 +74,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
       alert("Se ha agregado los datos correctamente")
     } else {
       e.preventDefault();
-      // setemployeeInputFormEdit({
-      //   ...employeeInputFormEdit,
-      //   first_name: escribirNombre,
-      //   last_name: escribirApellidos,
-      //   hora_entrada: escribirHoraEntrada,
-      //   hora_salida: escribirSalida,
-      //   departamento: escribirDepartamento,
-      //   formacion: escribirFormacion,
-      //   contacto: escribirContacto,
-      //   salario: escribirSalario
-      // });
+      
       const employeeEdit = {
         first_name: escribirNombre,
         last_name: escribirApellidos,
