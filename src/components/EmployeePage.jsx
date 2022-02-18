@@ -223,7 +223,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                   Salario
                 </label>
                 <input
-                  name="salario"
+                  // name="salario"
                   type="text"
                   className="form-control"
                   id="last_name"

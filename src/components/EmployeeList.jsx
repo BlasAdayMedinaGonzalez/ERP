@@ -30,9 +30,9 @@ const EmployeeList = ({employees, setRecargar, setEmployeeData, employeeData, se
     return (
       <div>
         <div className="row align-items-center">
-          <button type="button "className= "col bi-person-plus-fill btn-success" onClick={() => employeebooleanAdd()}> Añadir nuevo empleado</button>
+          <button type="button "className= "col btn-lg bi-person-plus-fill btn-success" onClick={() => employeebooleanAdd()}> Añadir nuevo empleado</button>
         </div>
-          <table className="table ">
+          <table className="table bg-info">
                 <thead className="table-dark">
                   <tr>
                     <th scope="col">Id empleado</th>
@@ -49,10 +49,10 @@ const EmployeeList = ({employees, setRecargar, setEmployeeData, employeeData, se
                     <tbody key={employee.employee_id}>
                       <tr>
                         <th scope="row">{employee.employee_id}</th>
-                          <td>{employee.first_name}</td>
-                          <td>{employee.last_name}</td>
+                          <td className="fw-bold">{employee.first_name}</td>
+                          <td className="fw-bold">{employee.last_name}</td>
                           <td>
-                            <button type="button" className="btn btn-info" onClick={() => (employeebooleanInfo() & sendata(employee))}>Datos</button>
+                            <button type="button" className="btn btn-warning" onClick={() => (employeebooleanInfo() & sendata(employee))}>Datos</button>
                             <button type="button" className="btn btn-danger ms-2" onClick={() => handleDelete(employee.employee_id)}>Borrar</button>
                           </td>
                       </tr>

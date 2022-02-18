@@ -143,7 +143,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
             </div>
             <div className="sm-3">
               <label className="form-label">
-                Hora de entrada
+                Horario de entrada
               </label>
               <input
                 name="hora_entrada"
@@ -157,7 +157,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
             </div>
             <div className="sm-3">
               <label className="form-label">
-                Hora de salida
+                Horario de salida
               </label>
               <input
                 name="hora_salida"
@@ -280,7 +280,8 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
     );
   } else {
     return (
-      <div>
+      <div className="container ">
+      <div className="card align-items-center bg-info mt-5 ">
           <h1>Datos del nuevo empleado:</h1>
           <form className="ms-2" onSubmit={handleSubmitAdd} >
             <div className="sm-3">
@@ -313,7 +314,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
             </div>
             <div className="sm-3">
               <label className="form-label">
-                Hora de entrada
+                Horario de entrada
               </label>
               <input
                 name="hora_entrada"
@@ -327,7 +328,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
             </div>
             <div className="sm-3">
               <label className="form-label">
-                Hora de salida
+                Horario de salida
               </label>
               <input
                 name="hora_salida"
@@ -395,14 +396,18 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 onChange={handleChange}
               />
             </div>
-            <button type="submit" className="btn btn-primary mt-2">
-              Añadir
-            </button>
+            <div className="d-grid col-6 mx-auto mb-2" >
+              <button type="submit" className="btn btn-success mt-2">
+                Añadir
+              </button>
+            </div>
           </form>
-          <div className="d-grid col-6 mx-auto">
-            <button type="submit" className="btn btn-info  ms-2 mt-2" onClick={() =>(setemployeeAddboolean(false) & setEmployeeInfo(true))}>
-              Volver
-            </button>
+          
+        </div>
+          <div className="d-grid col-6 mx-auto mt-5">
+              <button type="submit" className="btn btn-warning  ms-2 mt-2" onClick={() =>(setemployeeAddboolean(false) & setEmployeeInfo(true))}>
+                Volver
+              </button>
           </div>
         </div>)
   }
