@@ -52,7 +52,7 @@ const EmployeeList = ({employees, setRecargar, setEmployeeData, employeeData, se
                           <td>{employee.first_name}</td>
                           <td>{employee.last_name}</td>
                           <td>
-                            <button type="button" className="btn btn-info" onClick={() => (employeebooleanInfo() & sendata(employee))}>Info</button>
+                            <button type="button" className="btn btn-info" onClick={() => (employeebooleanInfo() & sendata(employee))}>Datos</button>
                             <button type="button" className="btn btn-danger ms-2" onClick={() => handleDelete(employee.employee_id)}>Borrar</button>
                           </td>
                       </tr>

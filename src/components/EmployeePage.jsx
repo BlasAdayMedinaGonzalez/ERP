@@ -17,8 +17,11 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
   const[escribirFormacion, setEscribirFormacion] = useState(employee.formacion);
   const[escribirContacto, setEscribirContacto] = useState(employee.contacto);
   const[escribirSalario, setEscribirSalario] = useState(employee.salario);
+  // const[escribirEntrada, setEscribirEntrada] = useState(timeEntrada);
+  // const[escribirSalidaF, setEscribirSalidaF] = useState(timeSalida);
+  const[escribirComentario, setEscribirComentario] = useState(employee.comentario);
 
-  console.log(employee);
+
   const padTo2Digits = (num) => {
     return String(num).padStart(2, '0');
   }
@@ -49,7 +52,9 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
       setEscribirContacto(e.target.value);
     } else if (e.target.name === "salario") {
       setEscribirSalario(e.target.value);
-    }
+    } else if (e.target.name === "comentario") {
+      setEscribirComentario(e.target.value); 
+    } 
   }
   const handleSubmitAdd = (e) => {
     e.preventDefault();
@@ -62,8 +67,13 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
       departamento: escribirDepartamento,
       formacion: escribirFormacion,
       contacto: escribirContacto,
-      salario: escribirSalario
+      salario: escribirSalario,
+      entrada: timeEntrada,
+      salida: timeSalida,
+      comentario: escribirComentario
     };
+    console.log("*******************");
+    console.log(employeeEdit);
     
     editaremployee(employeeEdit, employee.employee_id);
 
@@ -84,8 +94,8 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
       </nav>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-6">
-           <div className= "card">
+          <div className="col-6 mt-2">
+           <div className= "card bg-info">
             <div className="card-title fs-1 ms-2">Fichar:</div>
               <div className="fs-2 text-center">
                 Hora Entrada: 
@@ -93,7 +103,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
               <div className="fs-3 text-center">
                 {timeEntrada}
               </div>
-              <button className="btn btn-info mb-2" onClick={() => settimeEntrada()}>
+              <button className="btn btn-success mb-2" onClick={() => settimeEntrada()}>
                 Fichar Entrada
               </button>
               <div className="fs-2 text-center">
@@ -102,12 +112,12 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
               <div className="fs-3 text-center">
                 {timeSalida}
               </div>
-              <button className="btn btn-info mb-2" onClick={() => settimeSalida()}>
+              <button className="btn btn-success mb-2" onClick={() => settimeSalida()}>
                 Fichar Salida
               </button>
            </div>
           </div>
-          <div className="col-6">
+          <div className="col-6 mt-2 bg-warning">
             <h1>Ficha del empleado: {employee.first_name}</h1>
             <form className="ms-2" onSubmit={handleSubmitAdd} >
               <div className="sm-3">
@@ -222,9 +232,53 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                   onChange={handleChange}
                 />
               </div>
-              <button type="submit" className="btn btn-primary mt-2">
-                Actualizar
-              </button>
+              <div className="sm-3">
+                <label className="form-label">
+                Hora Entrada
+                </label>
+                <input
+                  name="entrada"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={timeEntrada}
+                  placeholder={timeEntrada}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label">
+                  Hora Salida
+                </label>
+                <input
+                  name="salida"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={timeSalida}
+                  placeholder={timeSalida}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label">
+                  Comentario a Admin
+                </label>
+                <input
+                  name="comentario"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirComentario}
+                  placeholder={employee.comentario}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit" className="btn btn-primary mt-2 mb-2 ">
+                  Actualizar
+                </button>
+              </div>
             </form>
             
           </div>

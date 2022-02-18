@@ -35,6 +35,17 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
   const[escribirFormacion, setEscribirFormacion] = useState(employeeData.formacion);
   const[escribirContacto, setEscribirContacto] = useState(employeeData.contacto);
   const[escribirSalario, setEscribirSalario] = useState(employeeData.salario);
+  const [timeEntrada, setTimeEntrada] = useState(employeeData.entrada);
+  const [timeSalida, setTimeSalida] = useState(employeeData.salida);
+  const[escribirComentario, setEscribirComentario] = useState(employeeData.comentario);
+
+// console.log('====================================');
+// console.log(timeEntrada);
+// console.log('====================================');
+//   if (timeEntrada === undefined && timeSalida === undefined) {
+//     setTimeEntrada("Sin Fichar")
+//     setTimeSalida("Sin Fichar");
+//   }
 
   const handleChange = (e) => {
     if (employeeAddboolean) {
@@ -59,6 +70,8 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
         setEscribirContacto(e.target.value);
       } else if (e.target.name === "salario") {
         setEscribirSalario(e.target.value);
+      } else if (e.target.name === "comentario") {
+        setEscribirComentario(e.target.value); 
       }
       
     }
@@ -83,7 +96,10 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
         departamento: escribirDepartamento,
         formacion: escribirFormacion,
         contacto: escribirContacto,
-        salario: escribirSalario
+        salario: escribirSalario,
+        entrada: timeEntrada,
+        salida: timeSalida,
+        comentario: escribirComentario
       };
       editaremployee(employeeEdit, employeeData.employee_id);
       alert("Se ha actualizado los datos correctamente")
@@ -94,7 +110,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
   
   if (!employeeAddboolean) {
     return (
-      <div>
+      <div className="card col-12 align-items-center bg-info">
           <h1>Datos de la persona:</h1>
           <form className="ms-2" onSubmit={handleSubmitAdd} >
             <div className="sm-3">
@@ -209,12 +225,54 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 onChange={handleChange}
               />
             </div>
-            <button type="submit" className="btn btn-primary mt-2">
+            <div className="sm-3">
+                <label className="form-label">
+                Hora Entrada
+                </label>
+                <input
+                  // name="entrada"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={timeEntrada}
+                  placeholder={timeEntrada}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label">
+                  Hora Salida
+                </label>
+                <input
+                  // name="salida"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={timeSalida}
+                  placeholder={timeSalida}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label">
+                  Comentario a Empleado
+                </label>
+                <input
+                  name="comentario"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirComentario}
+                  placeholder={employeeData.comentario}
+                  onChange={handleChange}
+                />
+              </div>
+            <button type="submit" className="btn btn-primary mt-2 ms-5 ">
               Actualizar
             </button>
           </form>
           <div className="d-grid col-6 mx-auto">
-            <button type="submit" className="btn btn-info  ms-2 mt-2" onClick={() => setEmployeeInfo(true)}>
+            <button type="submit" className="btn btn-warning  ms-2 mt-2" onClick={() => setEmployeeInfo(true)}>
               Volver
             </button>
           </div>
