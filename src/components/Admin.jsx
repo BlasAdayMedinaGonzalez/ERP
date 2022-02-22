@@ -111,7 +111,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
           <h1>Datos de la persona:</h1>
           <form className="ms-2" onSubmit={handleSubmitAdd} >
             <div className="sm-3">
-              <label className="form-label">
+              <label className="form-label fw-bold">
                 Nombre
               </label>
               <input
@@ -125,7 +125,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <div className="sm-3">
-              <label className="form-label">
+              <label className="form-label fw-bold">
                 Apellidos
               </label>
               <input
@@ -139,7 +139,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <div className="sm-3">
-              <label className="form-label">
+              <label className="form-label fw-bold">
                 Horario de entrada
               </label>
               <input
@@ -153,7 +153,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <div className="sm-3">
-              <label className="form-label">
+              <label className="form-label fw-bold">
                 Horario de salida
               </label>
               <input
@@ -167,7 +167,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <div className="sm-3">
-              <label className="form-label">
+              <label className="form-label fw-bold">
                 Departamento
               </label>
               <input
@@ -181,7 +181,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <div className="sm-3">
-              <label className="form-label">
+              <label className="form-label fw-bold">
                 Formación
               </label>
               <input
@@ -195,7 +195,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <div className="sm-3">
-              <label className="form-label">
+              <label className="form-label fw-bold">
                 Contacto
               </label>
               <input
@@ -209,7 +209,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <div className="sm-3">
-              <label className="form-label">
+              <label className="form-label fw-bold">
                 Salario
               </label>
               <input
@@ -223,7 +223,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             
-            <button type="submit" className="btn btn-primary mt-2 ms-5 mb-2">
+            <button type="submit" className="btn btn-primary mt-2 ms-5 mb-2 bi bi-arrow-clockwise fw-bold">
               Actualizar
             </button>
           </form>
@@ -231,9 +231,10 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
         </div>
         <div className= "card bg-warning col-6 ">
                 <form className="ms-2 mt-5" onSubmit={handleSubmitAdd}>
+                  <h1 className= "text-center">Control del día:</h1>
               <div className="sm-3 mt-2">
-                <label className="form-label">
-                Hora Entrada del Empleado
+                <label className="form-label fw-bold">
+                Hora Entrada del empleado
                 </label>
                 <input
                   name="entrada"
@@ -246,8 +247,8 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 />
               </div>
               <div className="sm-3 mt-2">
-                <label className="form-label">
-                Tareas Realizadas empleado
+                <label className="form-label fw-bold">
+                Tareas realizadas del empleado
                 </label>
                 <input
                 
@@ -260,8 +261,8 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
-                  Hora Salida del empleado
+                <label className="form-label fw-bold">
+                  Hora salida del empleado
                 </label>
                 <input
                   name="salida"
@@ -274,8 +275,8 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
-                  Comentario a Empleado
+                <label className="form-label fw-bold">
+                  Comentario a empleado
                 </label>
                 <input
                   name="comentario"
@@ -288,14 +289,14 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 />
               </div>
               <div class="d-flex justify-content-center">
-                <button type="submit" className="btn btn-primary mt-2 mb-2 ">
+                <button type="submit" className="btn btn-primary mt-2 mb-2 bi bi-send-fill fw-bold">
                   Enviar a comentario a empleado
                 </button>
               </div>
               </form>
               </div>
               <div className="d-grid col-6 mx-auto">
-            <button type="submit" className="btn btn-success ms-2 mt-2" onClick={() => setEmployeeInfo(true)}>
+            <button type="submit" className="btn btn-success ms-2 mt-2 bi bi-arrow-left fw-bold" onClick={() => setEmployeeInfo(true)}>
               Volver
             </button>
           </div>
@@ -304,8 +305,8 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
     );
   } else {
     return (
-      <div className="container ">
-      <div className="card align-items-center bg-info mt-5 ">
+      <div className="">
+      <div className="card align-items-center bg-info  ">
           <h1>Datos del nuevo empleado:</h1>
           <form className="ms-2" onSubmit={handleSubmitAdd} >
             <div className="sm-3">
@@ -421,18 +422,19 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               />
             </div>
             <div className="d-grid col-6 mx-auto mb-2" >
-              <button type="submit" className="btn btn-success mt-2">
+              <button type="submit" className="btn btn-success mt-2 fw-bold">
                 Añadir
               </button>
             </div>
           </form>
-          
-        </div>
           <div className="d-grid col-6 mx-auto mt-5">
-              <button type="submit" className="btn btn-warning  ms-2 mt-2" onClick={() =>(setemployeeAddboolean(false) & setEmployeeInfo(true))}>
+              <button type="submit" className="btn btn-warning ms-2 mt-2 mb-2 bi bi-arrow-left fw-bold" onClick={() =>(setemployeeAddboolean(false) & setEmployeeInfo(true))}>
                 Volver
               </button>
           </div>
+          
+        </div>
+          
         </div>)
   }
   

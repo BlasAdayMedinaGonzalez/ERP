@@ -74,7 +74,7 @@ const Login = ({data, onSubmitValues, employees, setEmployeeData,
                         onChange = {handleChange} />
                         </div>
                         <div className="d-grid col-6 mx-auto">
-                        <button type="submit" className="btn btn-warning mb-2">Login</button>
+                        <button type="submit" className="btn btn-warning mb-2 bi bi-box-arrow-in-right fw-bold"> Login</button>
                     </div>
                 </form>
               </div>
@@ -86,7 +86,7 @@ const Login = ({data, onSubmitValues, employees, setEmployeeData,
     if (adminVerification) {
       return <Navbar employeeAddboolean={employeeAddboolean} setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} setEmployeeInfo= {setEmployeeInfo} data={data} employeeData={employeeData} setEmployeeData={setEmployeeData} employees={employees} setLogin={setLogin} setRecargar={setRecargar} />
     } else  {
-      // setemployeeInfo();
+  
       return ( 
       <EmployeePage data={data} employees={employees} employee={employee} setEmployee={setEmployee} setRecargar={setRecargar} setLogin={setLogin} />
       

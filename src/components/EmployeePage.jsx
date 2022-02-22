@@ -91,20 +91,21 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
               <a className= "navbar-brand text-white-50 ms-2">Usuario : </a>
               <a className= "navbar-brand">{employee.first_name}</a>
           </div>
-        <button className="btn btn-danger me-4" onClick={() =>  setLogin(true)}>Logout</button>
+        <button className="btn btn-danger me-4 bi bi-box-arrow-left fw-bold" onClick={() =>  setLogin(true)}> Logout</button>
       </nav>
       <div className="container-fluid">
         <div className="row">
           <div className="col-6 mt-2">
            <div className= "card bg-info">
-            <div className="card-title fs-1 ms-2">Fichar:</div>
+            <div className="card-title fs-1 ms-2"><h1>Fichar:</h1></div>
+            
               <div className="fs-2 text-center">
                 Hora Entrada: 
               </div>
               <div className="fs-3 text-center">
                 {timeEntrada}
               </div>
-              <button className="btn btn-success mb-2" onClick={() => settimeEntrada()}>
+              <button className="btn btn-success mb-2 fw-bold" onClick={() => settimeEntrada()}>
                 Fichar Entrada
               </button>
               <div className="fs-2 text-center">
@@ -113,15 +114,16 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
               <div className="fs-3 text-center">
                 {timeSalida}
               </div>
-              <button className="btn btn-success mb-2" onClick={() => settimeSalida()}>
+              <button className="btn btn-success mb-2 fw-bold" onClick={() => settimeSalida()}>
                 Fichar Salida
               </button>
            </div>
           
            <div className= "card bg-info mt-4">
                 <form className="ms-2" onSubmit={handleSubmitAdd}>
+                <h1 className= "text-center">Seguimiento del día:</h1>
               <div className="sm-3 mt-2">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                 Hora Entrada
                 </label>
                 <input
@@ -135,7 +137,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3 mt-2">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                 Tareas Realizadas
                 </label>
                 <input
@@ -149,7 +151,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Hora Salida
                 </label>
                 <input
@@ -163,7 +165,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Comentario a Admin
                 </label>
                 <input
@@ -177,7 +179,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div class="d-flex justify-content-center">
-                <button type="submit" className="btn btn-primary mt-2 mb-2 ">
+                <button type="submit" className="btn btn-primary mt-2 mb-2 bi bi-send-fill fw-bold">
                   Enviar a Admin
                 </button>
               </div>
@@ -189,13 +191,13 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
             <h1>Ficha del empleado: {employee.first_name}</h1>
             <form className="ms-2" onSubmit={handleSubmitAdd} >
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Nombre
                 </label>
                 <input
                   // name="first_name"
                   type="text"
-                  className="form-control"
+                  className="form-control "
                   id="first_name"
                   value= {escribirNombre}
                   placeholder={employee.first_name}
@@ -203,7 +205,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Apellidos
                 </label>
                 <input
@@ -217,7 +219,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Horario de entrada
                 </label>
                 <input
@@ -231,13 +233,13 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Horario de salida
                 </label>
                 <input
                   
                   type="text"
-                  className="form-control"
+                  className="form-control "
                   id="last_name"
                   value={escribirSalida}
                   placeholder={employee.hora_salida}
@@ -245,7 +247,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Departamento
                 </label>
                 <input
@@ -258,7 +260,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Formación
                 </label>
                 <input
@@ -272,7 +274,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Contacto
                 </label>
                 <input
@@ -286,7 +288,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>
               <div className="sm-3">
-                <label className="form-label">
+                <label className="form-label fw-bold">
                   Salario
                 </label>
                 <input
@@ -300,7 +302,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 />
               </div>   
               <div class="d-flex justify-content-center mt-4">
-                <button type="submit" className="btn btn-primary mt-2 mb-2 ">
+                <button type="submit" className="btn btn-primary mt-3 mb-2 bi bi-arrow-clockwise fw-bold">
                   Actualizar
                 </button>
               </div>

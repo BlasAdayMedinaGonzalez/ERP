@@ -10,7 +10,7 @@ const Navbar = ({setLogin, data, employees, setEmployeeData, employeeData, setRe
               <a className= "navbar-brand">{data.user}</a>
           </div>
           <div className="d-flex">
-            <button type="button" onClick={() => setLogin(true)} className="btn btn-danger me-4">Logout</button>
+            <button type="button" onClick={() => setLogin(true)} className="btn btn-danger me-4 bi bi-box-arrow-left fw-bold"> Logout</button>
           </div>
       </nav>
       <EmployeeList employeeAddboolean={employeeAddboolean} setemployeeAddboolean={setemployeeAddboolean} employeeInfo={employeeInfo} setEmployeeInfo={setEmployeeInfo}  employees={employees} employeeData={employeeData} setEmployeeData={setEmployeeData} setRecargar={setRecargar} />
