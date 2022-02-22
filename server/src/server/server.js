@@ -98,7 +98,7 @@ app.get('/api/v1/employee/:id', async (req, res) => {
 })
 
 app.post("/api/v1/employee", async (req, res) => {
-    const {first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,entrada,salida,comentario} = req.body;
+    const {first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,entrada,tarea,salida,comentario} = req.body;
 
     if (!first_name || !last_name) {
         return res.status(400).send({
@@ -109,8 +109,8 @@ app.post("/api/v1/employee", async (req, res) => {
     }
 
     try {
-        const sql = "INSERT INTO employees (first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,entrada,salida,comentario) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
-        const results = await query(sql, [first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,entrada,salida,comentario])
+        const sql = "INSERT INTO employees (first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,tarea,entrada,salida,comentario) VALUES (?, ?, ?, ?, ?, ?, ?,?, ?,?,?,?)";
+        const results = await query(sql, [first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,tarea,entrada,salida,comentario])
 
         res.send({
             error: false,
@@ -125,7 +125,7 @@ app.post("/api/v1/employee", async (req, res) => {
 
 
 app.put("/api/v1/employee/:id", async (req,res) => {
-    const {first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,entrada,salida,comentario} = req.body;
+    const {first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,entrada,tarea,salida,comentario} = req.body;
     const {id} = req.params;
 
     if (!id || !first_name || !last_name) {
@@ -136,8 +136,8 @@ app.put("/api/v1/employee/:id", async (req,res) => {
     }
 
     try {
-        const sql = "UPDATE employees SET first_name = ?, last_name = ?, hora_entrada = ?, hora_salida = ?, departamento = ?, formacion = ?, contacto = ?, salario = ?,entrada = ?,salida = ?,comentario = ? WHERE employee_id = ?";
-        const results = await query(sql, [first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,entrada,salida,comentario, id]);
+        const sql = "UPDATE employees SET first_name = ?, last_name = ?, hora_entrada = ?, hora_salida = ?, departamento = ?, formacion = ?, contacto = ?, salario = ?,entrada = ?, tarea = ?,salida = ?,comentario = ? WHERE employee_id = ?";
+        const results = await query(sql, [first_name, last_name, hora_entrada, hora_salida, departamento, formacion, contacto, salario,entrada,tarea,salida,comentario, id]);
         let message = "";
         if (results.changedRows === 0) {
             message = "employee not found or data are same"

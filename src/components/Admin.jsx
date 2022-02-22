@@ -36,16 +36,11 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
   const[escribirContacto, setEscribirContacto] = useState(employeeData.contacto);
   const[escribirSalario, setEscribirSalario] = useState(employeeData.salario);
   const [timeEntrada, setTimeEntrada] = useState(employeeData.entrada);
+  const [escribirTarea, setEscribirTarea] = useState(employeeData.tarea);
   const [timeSalida, setTimeSalida] = useState(employeeData.salida);
   const[escribirComentario, setEscribirComentario] = useState(employeeData.comentario);
 
-// console.log('====================================');
-// console.log(timeEntrada);
-// console.log('====================================');
-//   if (timeEntrada === undefined && timeSalida === undefined) {
-//     setTimeEntrada("Sin Fichar")
-//     setTimeSalida("Sin Fichar");
-//   }
+
 
   const handleChange = (e) => {
     if (employeeAddboolean) {
@@ -98,6 +93,7 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
         contacto: escribirContacto,
         salario: escribirSalario,
         entrada: timeEntrada,
+        tarea: escribirTarea,
         salida: timeSalida,
         comentario: escribirComentario
       };
@@ -110,7 +106,8 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
   
   if (!employeeAddboolean) {
     return (
-      <div className="card col-12 align-items-center bg-info">
+      <div className="row">
+      <div className="card col-6 align-items-center bg-info">
           <h1>Datos de la persona:</h1>
           <form className="ms-2" onSubmit={handleSubmitAdd} >
             <div className="sm-3">
@@ -225,12 +222,21 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                 onChange={handleChange}
               />
             </div>
-            <div className="sm-3">
+            
+            <button type="submit" className="btn btn-primary mt-2 ms-5 mb-2">
+              Actualizar
+            </button>
+          </form>
+          
+        </div>
+        <div className= "card bg-warning col-6 ">
+                <form className="ms-2 mt-5" onSubmit={handleSubmitAdd}>
+              <div className="sm-3 mt-2">
                 <label className="form-label">
-                Hora Entrada
+                Hora Entrada del Empleado
                 </label>
                 <input
-                  // name="entrada"
+                  name="entrada"
                   type="text"
                   className="form-control"
                   id="last_name"
@@ -239,12 +245,26 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                   onChange={handleChange}
                 />
               </div>
-              <div className="sm-3">
+              <div className="sm-3 mt-2">
                 <label className="form-label">
-                  Hora Salida
+                Tareas Realizadas empleado
                 </label>
                 <input
-                  // name="salida"
+                
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirTarea}
+                  placeholder={escribirTarea}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label">
+                  Hora Salida del empleado
+                </label>
+                <input
+                  name="salida"
                   type="text"
                   className="form-control"
                   id="last_name"
@@ -267,16 +287,20 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                   onChange={handleChange}
                 />
               </div>
-            <button type="submit" className="btn btn-primary mt-2 ms-5 ">
-              Actualizar
-            </button>
-          </form>
-          <div className="d-grid col-6 mx-auto">
-            <button type="submit" className="btn btn-warning  ms-2 mt-2" onClick={() => setEmployeeInfo(true)}>
+              <div class="d-flex justify-content-center">
+                <button type="submit" className="btn btn-primary mt-2 mb-2 ">
+                  Enviar a comentario a empleado
+                </button>
+              </div>
+              </form>
+              </div>
+              <div className="d-grid col-6 mx-auto">
+            <button type="submit" className="btn btn-success ms-2 mt-2" onClick={() => setEmployeeInfo(true)}>
               Volver
             </button>
           </div>
-        </div>
+      </div>
+        
     );
   } else {
     return (

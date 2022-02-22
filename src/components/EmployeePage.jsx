@@ -17,10 +17,8 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
   const[escribirFormacion, setEscribirFormacion] = useState(employee.formacion);
   const[escribirContacto, setEscribirContacto] = useState(employee.contacto);
   const[escribirSalario, setEscribirSalario] = useState(employee.salario);
-  // const[escribirEntrada, setEscribirEntrada] = useState(timeEntrada);
-  // const[escribirSalidaF, setEscribirSalidaF] = useState(timeSalida);
   const[escribirComentario, setEscribirComentario] = useState(employee.comentario);
-
+  const[escribirTarea, setEscribirTarea] = useState(employee.tarea);
 
   const padTo2Digits = (num) => {
     return String(num).padStart(2, '0');
@@ -54,7 +52,9 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
       setEscribirSalario(e.target.value);
     } else if (e.target.name === "comentario") {
       setEscribirComentario(e.target.value); 
-    } 
+    } else if (e.target.name === "tarea") {
+      setEscribirTarea(e.target.value);
+    }
   }
   const handleSubmitAdd = (e) => {
     e.preventDefault();
@@ -69,6 +69,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
       contacto: escribirContacto,
       salario: escribirSalario,
       entrada: timeEntrada,
+      tarea: escribirTarea,
       salida: timeSalida,
       comentario: escribirComentario
     };
@@ -116,7 +117,74 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 Fichar Salida
               </button>
            </div>
+          
+           <div className= "card bg-info mt-4">
+                <form className="ms-2" onSubmit={handleSubmitAdd}>
+              <div className="sm-3 mt-2">
+                <label className="form-label">
+                Hora Entrada
+                </label>
+                <input
+                  name="entrada"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={timeEntrada}
+                  placeholder={timeEntrada}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3 mt-2">
+                <label className="form-label">
+                Tareas Realizadas
+                </label>
+                <input
+                  name="tarea"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirTarea}
+                  placeholder={escribirTarea}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label">
+                  Hora Salida
+                </label>
+                <input
+                  name="salida"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={timeSalida}
+                  placeholder={timeSalida}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label">
+                  Comentario a Admin
+                </label>
+                <input
+                  name="comentario"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirComentario}
+                  placeholder={employee.comentario}
+                  onChange={handleChange}
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit" className="btn btn-primary mt-2 mb-2 ">
+                  Enviar a Admin
+                </button>
+              </div>
+              </form>
+              </div>
           </div>
+          
           <div className="col-6 mt-2 bg-warning">
             <h1>Ficha del empleado: {employee.first_name}</h1>
             <form className="ms-2" onSubmit={handleSubmitAdd} >
@@ -153,7 +221,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                   Horario de entrada
                 </label>
                 <input
-                  name="hora_entrada"
+                  
                   type="text"
                   className="form-control"
                   id="last_name"
@@ -167,7 +235,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                   Horario de salida
                 </label>
                 <input
-                  name="hora_salida"
+                  
                   type="text"
                   className="form-control"
                   id="last_name"
@@ -181,7 +249,6 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                   Departamento
                 </label>
                 <input
-                  name="departamento"
                   type="text"
                   className="form-control"
                   id="last_name"
@@ -231,50 +298,8 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                   placeholder={employee.salario}
                   onChange={handleChange}
                 />
-              </div>
-              <div className="sm-3">
-                <label className="form-label">
-                Hora Entrada
-                </label>
-                <input
-                  name="entrada"
-                  type="text"
-                  className="form-control"
-                  id="last_name"
-                  value={timeEntrada}
-                  placeholder={timeEntrada}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="sm-3">
-                <label className="form-label">
-                  Hora Salida
-                </label>
-                <input
-                  name="salida"
-                  type="text"
-                  className="form-control"
-                  id="last_name"
-                  value={timeSalida}
-                  placeholder={timeSalida}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="sm-3">
-                <label className="form-label">
-                  Comentario a Admin
-                </label>
-                <input
-                  name="comentario"
-                  type="text"
-                  className="form-control"
-                  id="last_name"
-                  value={escribirComentario}
-                  placeholder={employee.comentario}
-                  onChange={handleChange}
-                />
-              </div>
-              <div class="d-flex justify-content-center">
+              </div>   
+              <div class="d-flex justify-content-center mt-4">
                 <button type="submit" className="btn btn-primary mt-2 mb-2 ">
                   Actualizar
                 </button>
@@ -282,6 +307,7 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
             </form>
             
           </div>
+          
         </div>
       </div>
       
