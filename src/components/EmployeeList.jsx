@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {eliminaremployee} from "../services/services";
 import EmployeeUser from './Admin';
+import Grafica from '../components/Grafica'
 
 
 const EmployeeList = ({employees, setRecargar, setEmployeeData, employeeData, setEmployeeInfo, employeeInfo, employeeAddboolean, setemployeeAddboolean}) => {
@@ -25,10 +26,11 @@ const EmployeeList = ({employees, setRecargar, setEmployeeData, employeeData, se
     setemployeeAddboolean(true);
     console.log("botón add");
   }
-
+  console.log(employees);
   if (employeeInfo) {
     return (
       <div>
+        <Grafica employees={employees}/>
         <div className="row align-items-center">
           <button type="button "className= "col btn-lg bi-person-plus-fill btn-success fw-bold" onClick={() => employeebooleanAdd()}> Añadir nuevo empleado</button>
         </div>

@@ -39,6 +39,8 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
   const [escribirTarea, setEscribirTarea] = useState(employeeData.tarea);
   const [timeSalida, setTimeSalida] = useState(employeeData.salida);
   const[escribirComentario, setEscribirComentario] = useState(employeeData.comentario);
+  const[escribirRendimiento, setEscribirRendimiento] = useState(employeeData.rendimiento);
+  const[escribirComentarioEmployee, setEscribirComentarioEmployee] = useState(employeeData.comentarioEmployee);
 
 
 
@@ -67,6 +69,10 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
         setEscribirSalario(e.target.value);
       } else if (e.target.name === "comentario") {
         setEscribirComentario(e.target.value); 
+      } else if (e.target.name === "rendimiento") {
+        setEscribirRendimiento(e.target.value);
+      }else if (e.target.name === "comentarioEmployee") {
+        setEscribirComentarioEmployee(e.target.value);
       }
       
     }
@@ -95,7 +101,9 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
         entrada: timeEntrada,
         tarea: escribirTarea,
         salida: timeSalida,
-        comentario: escribirComentario
+        comentarioEmployee: escribirComentarioEmployee,
+        comentario: escribirComentario, 
+        rendimiento: escribirRendimiento
       };
       editaremployee(employeeEdit, employeeData.employee_id);
       alert("Se ha actualizado los datos correctamente")
@@ -276,10 +284,9 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
               </div>
               <div className="sm-3">
                 <label className="form-label fw-bold">
-                  Comentario a empleado
+                  Comentario recibido del empleado
                 </label>
                 <input
-                  name="comentario"
                   type="text"
                   className="form-control"
                   id="last_name"
@@ -288,9 +295,39 @@ const EmployeeUser = ({employeeData, setRecargar, setEmployeeInfo, employeeInfo,
                   onChange={handleChange}
                 />
               </div>
+              <h1 className="text-center mt-5">Rendimiento</h1>
+              <div className="sm-3">
+                <label className="form-label fw-bold">
+                  Evaluar Rendimiento Empleado
+                </label>
+                <input
+                  name="rendimiento"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirRendimiento}
+                  placeholder={employeeData.rendimiento}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label fw-bold">
+                  Comentario a empleado
+                </label>
+                <input
+                  name="comentarioEmployee"
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirComentarioEmployee}
+                  placeholder={employeeData.comentarioEmployee}
+                  onChange={handleChange}
+                />
+              </div>
+              
               <div class="d-flex justify-content-center">
                 <button type="submit" className="btn btn-primary mt-2 mb-2 bi bi-send-fill fw-bold">
-                  Enviar a comentario a empleado
+                  Enviar  a empleado
                 </button>
               </div>
               </form>

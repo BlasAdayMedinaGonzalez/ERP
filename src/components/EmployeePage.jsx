@@ -19,6 +19,8 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
   const[escribirSalario, setEscribirSalario] = useState(employee.salario);
   const[escribirComentario, setEscribirComentario] = useState(employee.comentario);
   const[escribirTarea, setEscribirTarea] = useState(employee.tarea);
+  const[escribirRendimiento, setEscribirRendimiento] = useState(employee.rendimiento);
+  const[escribirComentarioEmployee, setEscribirComentarioEmployee] = useState(employee.comentarioEmployee);
 
   const padTo2Digits = (num) => {
     return String(num).padStart(2, '0');
@@ -54,6 +56,10 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
       setEscribirComentario(e.target.value); 
     } else if (e.target.name === "tarea") {
       setEscribirTarea(e.target.value);
+    } else if (e.target.name === "rendimiento") {
+      setEscribirRendimiento(e.target.value);
+    } else if (e.target.name === "comentarioEmployee") {
+      setEscribirComentarioEmployee(e.target.value);
     }
   }
   const handleSubmitAdd = (e) => {
@@ -71,7 +77,9 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
       entrada: timeEntrada,
       tarea: escribirTarea,
       salida: timeSalida,
-      comentario: escribirComentario
+      comentarioEmployee: escribirComentarioEmployee,
+      comentario: escribirComentario,
+      rendimiento: escribirRendimiento
     };
     console.log("*******************");
     console.log(employeeEdit);
@@ -166,6 +174,19 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
               </div>
               <div className="sm-3">
                 <label className="form-label fw-bold">
+                  Comentario recibido del admin
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirComentarioEmployee}
+                  placeholder={employee.comentarioEmployee}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="sm-3">
+                <label className="form-label fw-bold">
                   Comentario a Admin
                 </label>
                 <input
@@ -182,6 +203,19 @@ const EmployeePage = ({employees, setRecargar, setLogin, data}) => {
                 <button type="submit" className="btn btn-primary mt-2 mb-2 bi bi-send-fill fw-bold">
                   Enviar a Admin
                 </button>
+              </div>
+              <div className="sm-3 mb-2 text-center">
+                <label className="form-label fw-bold">
+                   <h1>Tu Rendimiento:</h1>
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="last_name"
+                  value={escribirRendimiento}
+                  placeholder={employee.rendimiento}
+                  onChange={handleChange}
+                />
               </div>
               </form>
               </div>
